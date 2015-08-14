@@ -33,9 +33,11 @@ action :create do
     end
   ensure
     file pkg_file.path do
-      action :delete
-      only_if { pkg_file }
-    end
+      if pag_file
+        action :delete
+          only_if { pkg_file }
+        end
+      end
   end
 end
 
